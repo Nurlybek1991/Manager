@@ -2,16 +2,21 @@
 <img src="https://darksoul-git.github.io/Naruto-Login-Template/DarkSoul%20-%20naruto%20sign2.png" alt="darksoul-naruto-sign2" class="naruto-sign1" />
 <div class="darksoul-container">
     <div class="square"><h1>Login</h1></div>
-    <form class="f-col m-auto form-container" action="{{ route('login.login')}}" method="post">
+    <form class="f-col m-auto form-container" action="{{ route('login')}}" method="post">
         @csrf
         <label class="mb-10">Email</label>
-        <input class="darksoul-input" type="email" name="email" required>
+        <input class="darksoul-input" type="email" name="email" value="{{old('email')}}" required autofocus>
+        @error ('email')
+        <span class="darksoul-input" style="color: red">{{ $message}}</span>
+        @enderror
         <label class="mb-10 mt-20">Password</label>
         <div class="darksoul-password f-row">
             <input class="m-auto darksoul-input" type="password" name="password" id="password" required>
             <img class="m-auto eye-icon" width="18" height="18" src="https://img.icons8.com/fluency-systems-filled/48/FD7E14/visible.png" alt="visible" onclick="toggle()"/>
         </div>
-
+        @error ('password')
+        <span class="darksoul-input" style="color: red">{{ $message}}</span>
+        @enderror
         <button class="mt-40 m-auto darksoul-hover-fill-button" type="submit"><div class="color-fill"></div><p>Login</p></button>
     </form>
 </div>
