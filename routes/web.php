@@ -25,6 +25,9 @@ Route::post('/registration', [UserController::class, 'create'])->name('registrat
 Route::get('/login', [UserController::class, 'login'])->name('login.login');
 Route::post('/login', [UserController::class, 'checkLogin'])->name('login');
 
-Route::get('/board', [BoardController::class, 'board'])->name('board.board');
 
-
+//Route::get('/board', [BoardController::class, 'index'])->name('tasks.index');
+//Route::post('/board', [BoardController::class, 'store'])->name('tasks.store');
+Route::get('/board', [BoardController::class, 'indexBoards'])->name('boards');
+Route::post('/board', [BoardController::class, 'storeBoards'])->name('storeBor');
+Route::get('/profile', [BoardController::class, 'editProfile'])->name('editProfile');

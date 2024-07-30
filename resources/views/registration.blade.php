@@ -1,34 +1,35 @@
+
 <img src="https://darksoul-git.github.io/Naruto-Login-Template/DarkSoul%20-%20%20naruto%20sign1.png"
      alt="darksoul-naruto-sign1" class="naruto-sign2"/>
 <img src="https://darksoul-git.github.io/Naruto-Login-Template/DarkSoul%20-%20naruto%20sign2.png"
      alt="darksoul-naruto-sign2" class="naruto-sign1"/>
 <div class="darksoul-container">
-    <div class="square"><h1>Register</h1></div>
-{{--    <ul>--}}
-{{--        @foreach($errors->all() as $message)--}}
-{{--            <li>{{ $message }}</li>--}}
-{{--        @endforeach--}}
-{{--    </ul>--}}
+    <div class="square"><h1>Регистрация</h1></div>
+    {{--    <ul>--}}
+    {{--        @foreach($errors->all() as $message)--}}
+    {{--            <li>{{ $message }}</li>--}}
+    {{--        @endforeach--}}
+    {{--    </ul>--}}
     <form class="f-col m-auto form-container" action='{{route('registrate')}}' method="POST">
         @csrf
-        <label class="mb-10">First Name</label>
+        <label class="mb-10">Имя</label>
         <input class="darksoul-input" type="text" name="firstname" value="{{ old('firstname') }}" required autofocus>
         @error ('firstname')
         <span class="darksoul-input" style="color: red">{{ $message}}</span>
         @enderror
-        <label class="mb-10 mt-20">Last Name</label>
+        <label class="mb-10 mt-20">Фамилия</label>
         <input class="darksoul-input" type="text" name="lastname" value="{{ old('lastname') }}" required autofocus>
         @error ('lastname')
         <span class="darksoul-input" style="color: red">{{ $message}}</span>
         @enderror
-        <label class="mb-10 mt-20">Email</label>
+        <label class="mb-10 mt-20">Почта</label>
         <input class="darksoul-input" type="email" name="email" value="{{ old('email') }}" required autofocus>
         @error ('email')
         <span class="darksoul-input" style="color: red">{{ $message}}</span>
         @enderror
-        <label class="mb-10 mt-20">Enter Password</label>
+        <label class="mb-10 mt-20">Введите пароль</label>
         <div class="darksoul-password f-row">
-            <input class="m-auto darksoul-input" type="password" name="password" id="password" required autofocus>
+            <input class="m-auto darksoul-input" type="password" name="password" id="password" required>
             <img class="m-auto eye-icon" width="18" height="18"
                  src="https://img.icons8.com/fluency-systems-filled/48/FD7E14/visible.png" alt="visible"
                  onclick="toggle1()"/>
@@ -36,9 +37,9 @@
         @error ('password')
         <span class="darksoul-input" style="color: red">{{ $message}}</span>
         @enderror
-        <label class="mb-10 mt-20">Confirm Password</label>
+        <label class="mb-10 mt-20">Повторите пароль</label>
         <div class="darksoul-password f-row">
-            <input class="m-auto darksoul-input" type="password" name="password_confirm" id="password_confirm" required autofocus>
+            <input class="m-auto darksoul-input" type="password" name="password_confirm" id="password_confirm" required>
             <img class="m-auto eye-icon" width="18" height="18"
                  src="https://img.icons8.com/fluency-systems-filled/48/FD7E14/visible.png" alt="visible"
                  onclick="toggle2()"/>
@@ -46,13 +47,12 @@
         @error ('password_confirm')
         <span class="darksoul-input" style="color: red">{{ $message}}</span>
         @enderror
-        <button class="mt-40 m-auto darksoul-hover-fill-button" type="submit">
-            <div class="color-fill"></div>
-            <p>Register</p></button>
+        <button class="mt-40 m-auto darksoul-hover-fill-button" type="submit"> <div class="color-fill"></div> <p>Регистрация</p></button>
+        <p>У вас есть аккаунт? <a href="{{route('login')}}" id='log'>Логин</a></p>
     </form>
 </div>
-<p class="disclaimer">Designed & Created by <a href="https://darksoul-codepen.github.io/" target="_blank">DarkSoul</a>
-    &nbsp;| Icons by <a href="https://icons8.com/" target="_blank">Icons8</a></p>
+{{--<p class="disclaimer">Designed & Created by <a href="https://darksoul-codepen.github.io/" target="_blank">DarkSoul</a>--}}
+{{--    &nbsp;| Icons by <a href="https://icons8.com/" target="_blank">Icons8</a></p>--}}
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Rubik+Vinyl&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
@@ -126,7 +126,7 @@
     }
 
     .square {
-        width: 200px;
+        width: 240px;
         height: 200px;
         background-color: orange;
         box-shadow: 1px 1px 20px orange;
@@ -143,7 +143,7 @@
 
     .darksoul-hover-fill-button {
         display: flex;
-        width: 100px;
+        width: 135px;
         height: 40px;
         border-radius: 25px;
         outline: none;

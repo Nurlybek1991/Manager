@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Board extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'description', 'sort',];
+
+    protected $hidden = [
+        'created_at',
+        'update_at',
+    ];
+//    public function tasks()
+//    {
+//        return $this->HasMany(Task::class)->orderBy('sort');
+//    }
+
+    public function tasks()
+    {
+        return $this->belongsTo(Task::class);
+    }
 }

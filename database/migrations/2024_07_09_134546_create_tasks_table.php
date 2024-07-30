@@ -12,14 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',255)->nullable();
-            $table->text('description');
-            $table->foreignId('board_id')->constrained('boards');
-            $table->string('status');
-            $table->text('parent_id');
-//            $table->foreignId('create');
-//            $table->foreignId('complete');
+            $table->increments('id');
+//            $table->foreignId('board_id')->constrained()
+//                ->onUpdate('cascade')
+//                ->onDelete('cascade');
+            $table->string('title',255);
+//            $table->integer('sort')->default(999);
             $table->timestamps();
         });
     }

@@ -1,125 +1,153 @@
-<div id="main">
-    <div class="list">
-        <div class="title removable editable">This is a list</div>
-        <div class="content">
-            @foreach($tasks as $task)
-            <div class="card removable editable"> {{ $task['description'] }}</div>
-            @endforeach
-        </div>
-        <div class="add-card editable">Add another card</div>
-    </div>
-    <div class="list">
-        <div class="title removable editable">Another list</div>
-        <div class="content">
-            <div class="card removable editable">Hello world!</div>
-        </div>
-        <div class="add-card editable">Add another card</div>
-    </div>
-    <div class="list">
-        <div class="title removable editable">Empty list</div>
-        <div class="content"></div>
-        <div class="add-card editable">Add another card</div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-</div>
+<!-- Header -->
+<header>
+    <h1>RMAN</h1>
+    <!-- Navigation menu -->
+    <nav>
+        <ul>
+            <li><a href="#">Доски</a></li>
+            <li><a href="#">Задачи</a></li>
+            <li><a href="#">Команда</a></li>
+            <li><a href="#">Настройки</a></li>
+        </ul>
+    </nav>
+</header>
 
-<div class="add-list">
-    <div class="title editable">Add another list</div>
-</div>
+<!-- Main Content -->
+<main>
+    <!-- Team Members Section -->
+    <section>
+        <h2>Пользователь:  &ensp; </h2>
+        <article>
+            <img src="https://www.terrainhopperusa.com/wp-content/uploads/2019/01/avatar-woman.png" alt="Member Image">
+            <h3>{{$user->firstname}} {{$user->lastname}} </h3>
+            <p>{{$user->email}}</p>
+            <form action="{{ route('editProfile') }}" method="GET">
+                @csrf
+            <button>Данные пользователя</button>
+            </form>
+        </article>
+        <!-- More team members go here... -->
+    </section>
+
+    <!-- Featured Boards Section -->
+    <section>
+        <h2>Доски:       &ensp;  &ensp;  &ensp;    &ensp;    &ensp;        &ensp;</h2>
+        <article>
+            <img src="https://img.freepik.com/free-vector/african-boy-with-chalkboard-classroom-character_24877-59350.jpg?t=st=1720204276~exp=1720207876~hmac=42a0dfe753088115d929e9e5bd2b943e29f69f30c2f0af690b7efbd333a5190c" alt="Board Image">
+            <h3>Board Title</h3>
+            <p>Description of the board</p>
+            <button>Просмотреть доски</button>
+        </article>
+        <!-- More featured boards go here... -->
+    </section>
+
+    <!-- Recent Tasks Section -->
+    <section>
+        <h2>Список задач: &ensp;</h2>
+        <article>
+            <img src="https://cdn-icons-png.flaticon.com/512/2535/2535556.png" alt="Task Image">
+            <h3>Task Title</h3>
+            <p>Description of the task</p>
+            <button>Просмотреть список задач</button>
+        </article>
+        <!-- More recent tasks go here... -->
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; Copyright 2024 RMAN Inc.</p>
+</footer>
+
+</body>
+</html>
 
 <style>
     body {
-        font-family: sans-serif;
-        color: #172b4d;
-        background-color: #00A3E0;
-        display: flex;
-        align-items: start;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
     }
 
-    div {
-        border-radius: 3px;
-    }
-
-    #main {
-        display: flex;
-        align-items: start;
-    }
-
-    .title {
-        font-weight: 600;
-        margin: 7px;
-        padding: 10px;
-    }
-
-    .editable {
-        user-select: none;
-        outline: none;
+    header {
         display: flex;
         justify-content: space-between;
-    }
-
-    .editing {
-        background: white;
-        color: #172b4d !important;
-        box-shadow:inset 0px 0px 0px 2px #0279bf;
-    }
-
-    .editing:hover {
-        background: white !important;
-    }
-
-    .card {
-        background: white;
-        border-bottom: 1px solid #aaa;
-        margin: 7px;
+        align-items: center;
         padding: 10px;
-        cursor: pointer !important;
+        background-color: #333;
+        color: #fff;
     }
 
-    .list {
-        /*   padding: 7px; */
-        min-width: 280px;
-        margin: 10px 5px;
-        position: relative;
-        background: #dfe1e6;
+    h1 {
+        margin: 0;
     }
 
-
-    .add-list {
-        min-width: 280px;
-        margin: 10px 5px;
-        position: relative;
-        background: rgba(0,0,0,.12);
-        color: hsla(0,0%,100%,.8);
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
-    .ghost {
-        opacity: .1;
-        color: #000;
-        background-color: #000;
-    }
-
-    .add-card {
-        width: calc(100% - 35px);
+    nav li {
         display: inline-block;
-        padding: 10px;
-        margin-top: 0px;
-        color: gray;
+        margin-left: 10px;
+    }
+
+    nav a {
         text-decoration: none;
-        margin: 7px;
+        color: #fff;
+        padding: 5px;
+    }
+
+    main {
+        margin: 20px 0;
+    }
+
+    section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    article {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    h3 {
+        margin: 0;
+    }
+
+    button {
+        padding: 5px 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    footer {
+        text-align: center;
         padding: 10px;
-        /*   border-bottom: 1px solid #dfe1e6; */
+        background-color: #333;
+        color: #fff;
     }
 
-    .add-card:hover {
-        background-color: rgba(9,30,66,.13);
-    }
-
-    .del {
-        font-weight: 600;
-        color: gray;
-    }
-    .content {
-        border-bottom: 1px solid #cecece;
-    }
 </style>

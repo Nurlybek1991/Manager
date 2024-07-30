@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('description');
-            $table->foreignId('owner_id')->constrained('users');
+            $table->string('title');
+//            $table->string('description');
+//            $table->integer('sort')->default(999);
             $table->timestamps();
         });
     }

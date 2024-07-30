@@ -43,20 +43,24 @@ class UserController extends Controller
 
     public function checkLogin(Request $request): string
     {
+
+
         $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:8',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
-        if (!Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
             return back()
                 ->withInput()
                 ->withErrors([
-                    'email' => 'These credentials do not match our records.'
+                    'email' => 'Эти учетные данные не соответствуют нашим записям.'
                 ]);
         }
 
-        return redirect()->route('board.board');
+        $request->session()->regenerate();
+
+        return redirect()->route('tasks.index');
 
     }
 

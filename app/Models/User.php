@@ -17,4 +17,11 @@ class User extends \Illuminate\Foundation\Auth\User
         'password'
     ];
 
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+
 }
