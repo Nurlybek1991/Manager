@@ -14,54 +14,56 @@
     <!-- Navigation menu -->
     <nav>
         <ul>
-            <li><a href="#">Доски</a></li>
-            <li><a href="#">Задачи</a></li>
-            <li><a href="#">Команда</a></li>
-            <li><a href="#">Настройки</a></li>
+            <li><a href="{{ route('main')}}">Главная страница</a></li>
+            {{--            <li><a href="{{ route('editTask')}}">Задачи</a></li>--}}
+            {{--            <li><a href="{{ route('login') }}">Выход</a></li>--}}
         </ul>
     </nav>
 </header>
-
+{{--<h3>{{$user->firstname}} {{$user->lastname}} </h3>--}}
 <!-- Main Content -->
 <main>
-    <!-- Team Members Section -->
-    <section>
-        <h2>Пользователь:  &ensp; </h2>
-        <article>
-            <img src="https://www.terrainhopperusa.com/wp-content/uploads/2019/01/avatar-woman.png" alt="Member Image">
-            <h3>{{$user->firstname}} {{$user->lastname}} </h3>
-            <p>{{$user->email}}</p>
-            <form action="{{ route('editProfile') }}" method="GET">
-                @csrf
-            <button>Данные пользователя</button>
-            </form>
-        </article>
-        <!-- More team members go here... -->
-    </section>
-
+    {{--    @if(empty($boards))--}}
+    {{--        <p>Пусто</p>--}}
+    {{--        @else--}}
+    {{--        <p>Доски:</p>--}}
+    {{--    @endif--}}
     <!-- Featured Boards Section -->
+
     <section>
-        <h2>Доски:       &ensp;  &ensp;  &ensp;    &ensp;    &ensp;        &ensp;</h2>
-        <article>
-            <img src="https://img.freepik.com/free-vector/african-boy-with-chalkboard-classroom-character_24877-59350.jpg?t=st=1720204276~exp=1720207876~hmac=42a0dfe753088115d929e9e5bd2b943e29f69f30c2f0af690b7efbd333a5190c" alt="Board Image">
-            <h3>Board Title</h3>
-            <p>Description of the board</p>
-            <button>Просмотреть доски</button>
-        </article>
-        <!-- More featured boards go here... -->
+        <h2>Доски: &ensp; &ensp; &ensp; &ensp; &ensp; &ensp;</h2>
+        @foreach($boards as $board)
+            <article>
+                <img src="https://cdn-icons-png.freepik.com/512/9124/9124141.png" alt="Board Image">
+                <form action="{{ route('editTask') }}" method="get">
+                    <button type="submit">Перейти</button>
+                </form>
+                <h3>{{$board->title}}</h3>
+                <form action="{{ route('deleteBoard') }}" method="post">
+                    <button type="submit">Удалить</button>
+                </form>
+            </article>
+        @endforeach
+        <form action="{{ route('editBoard')}}" method="post">
+            @csrf
+            <input type="text" name="title" placeholder="Новая доска">
+            {{--                    <button type="submit">Submit</button>--}}
+            <button>Создать</button>
+        </form>
     </section>
 
-    <!-- Recent Tasks Section -->
-    <section>
-        <h2>Список задач: &ensp;</h2>
-        <article>
-            <img src="https://cdn-icons-png.flaticon.com/512/2535/2535556.png" alt="Task Image">
-            <h3>Task Title</h3>
-            <p>Description of the task</p>
-            <button>Просмотреть список задач</button>
-        </article>
-        <!-- More recent tasks go here... -->
-    </section>
+
+    {{--    <!-- Recent Tasks Section -->--}}
+    {{--    <section>--}}
+    {{--        <h2>Список задач: &ensp;</h2>--}}
+    {{--        <article>--}}
+    {{--            <img src="https://cdn-icons-png.flaticon.com/512/2535/2535556.png" alt="Task Image">--}}
+    {{--            <h3>Task Title</h3>--}}
+    {{--            <p>Description of the task</p>--}}
+    {{--            <button>Просмотреть список задач</button>--}}
+    {{--        </article>--}}
+    {{--        <!-- More recent tasks go here... -->--}}
+    {{--    </section>--}}
 </main>
 
 <!-- Footer -->

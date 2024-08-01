@@ -60,7 +60,7 @@ class UserController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('main');
 
     }
 

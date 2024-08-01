@@ -9,11 +9,12 @@ class Board extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'sort',];
+    protected $fillable = ['title','user_id'];
 
     protected $hidden = [
         'created_at',
         'update_at',
+
     ];
 //    public function tasks()
 //    {

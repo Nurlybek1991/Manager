@@ -3,13 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
-use App\Models\Task;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class BoardController extends Controller
 {
+
+    public function boardInfo()
+    {
+
+        $boards = Board::all();
+//        $users = DB::table('boards')->distinct()->get();
+
+//        $users = DB::table('boards',)
+//            ->select('*')
+//            ->get();
+//        var_dump($users);
+        return view('board', compact('boards'));
+
+    }
+
+    public function editBoard(Request $request)
+    {
+
+        Board::create($request->all());
+
+        return redirect()->route('editBoard');
+
+    }
+
+    public function deleteBoard(Request $request)
+    {
+
+        $boards = Board::destroy($request->all());
+//        var_dump($boards);
+
+        return redirect()->route('editBoard');
+
+    }
+
+//    public function edit($user_id)
+//    {
+//
+//        Board::all();
+//
+//        return redirect()->route('editBoard');
+////        var_dump($koki);
+//    }
+
+//    public function storeBoards(Request $request)
+//    {
+//        Board::create($request->all());
+//
+//        return redirect()->route('storeBor');
+//    }
 //    public function index()
 //    {
 //        $tasks = Task::all();
@@ -20,15 +71,6 @@ class BoardController extends Controller
 //
 //    }
 
-    public function indexBoards()
-    {
-        $boards = Board::all();
-        $user = Auth::user();
-//        dd($boards);
-
-        return view('board', compact('boards','user'));
-    }
-
 //    public function store(Request $request)
 //    {
 //        Task::create($request->all());
@@ -36,15 +78,5 @@ class BoardController extends Controller
 //        return redirect()->route('tasks.store');
 //    }
 
-    public function storeBoards(Request $request)
-    {
-        Board::create($request->all());
 
-        return redirect()->route('storeBor');
-    }
-
-    public function editProfile(): string
-    {
-        return view('profile');
-    }
 }
