@@ -10,7 +10,6 @@ class MainController extends Controller
     {
         $user = Auth::user();
 
-
         return view('main', compact('user'));
     }
 

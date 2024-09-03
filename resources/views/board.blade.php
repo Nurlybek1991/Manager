@@ -39,7 +39,10 @@
                     <button type="submit">Перейти</button>
                 </form>
                 <h3>{{$board->title}}</h3>
-                <form action="{{ route('deleteBoard') }}" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                <form action="{{ route("deleteBoard", ['id' => $board->id]) }}" method="post">
+                    @method('DELETE')
+                    @csrf
                     <button type="submit">Удалить</button>
                 </form>
             </article>

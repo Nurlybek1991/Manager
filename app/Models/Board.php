@@ -9,20 +9,23 @@ class Board extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','user_id'];
+    protected $fillable = [
+        'title',
+        'user_id'
+    ];
 
     protected $hidden = [
         'created_at',
         'update_at',
-
+        'description'
     ];
 //    public function tasks()
 //    {
 //        return $this->HasMany(Task::class)->orderBy('sort');
 //    }
 
-    public function tasks()
-    {
-        return $this->belongsTo(Task::class);
-    }
+//    public function tasks()
+//    {
+//        return $this->belongsTo(Task::class);
+//    }
 }

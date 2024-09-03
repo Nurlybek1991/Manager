@@ -9,20 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use function Laravel\Prompts\warning;
 
 class BoardController extends Controller
 {
 
     public function boardInfo()
     {
-
         $boards = Board::all();
-//        $users = DB::table('boards')->distinct()->get();
-
-//        $users = DB::table('boards',)
-//            ->select('*')
-//            ->get();
-//        var_dump($users);
         return view('board', compact('boards'));
 
     }
@@ -30,53 +24,23 @@ class BoardController extends Controller
     public function editBoard(Request $request)
     {
 
-        Board::create($request->all());
+        $id = Auth::id();
+        Board::create([
+            'title' => $request->title,
+            'user_id' => $id
+        ]);
 
-        return redirect()->route('editBoard');
+        return redirect()->route('board');
 
     }
 
-    public function deleteBoard(Request $request)
+    public function deleteBoard(int $id)
     {
+        $boards = Board::find($id);
+        $boards->delete();
 
-        $boards = Board::destroy($request->all());
-//        var_dump($boards);
-
-        return redirect()->route('editBoard');
+        return redirect()->route('board');
 
     }
-
-//    public function edit($user_id)
-//    {
-//
-//        Board::all();
-//
-//        return redirect()->route('editBoard');
-////        var_dump($koki);
-//    }
-
-//    public function storeBoards(Request $request)
-//    {
-//        Board::create($request->all());
-//
-//        return redirect()->route('storeBor');
-//    }
-//    public function index()
-//    {
-//        $tasks = Task::all();
-//        $user = Auth::user();
-//
-//
-//        return view('board', compact('tasks','user'));
-//
-//    }
-
-//    public function store(Request $request)
-//    {
-//        Task::create($request->all());
-//
-//        return redirect()->route('tasks.store');
-//    }
-
 
 }
