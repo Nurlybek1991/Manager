@@ -29,9 +29,10 @@ Route::post('/login', [UserController::class, 'checkLogin'])->name('login');
 Route::controller(BoardController::class)->group(function () {
     Route::get('/board', [BoardController::class, 'boardInfo'])->name('board');
     Route::post('/board', [BoardController::class, 'editBoard'])->name('editBoard');
-
+    Route::delete('/board/deleteBoard/{id}', [BoardController::class, 'deleteBoard'])->name('deleteBoard');
 });
-Route::delete('/board/deleteBoard/{id}', [BoardController::class, 'deleteBoard'])->name('deleteBoard');
+
+Route::post('/task/createTask', [MainController::class, 'createTask'])->name('createTask');
 Route::get('/main', [MainController::class, 'userInfo'])->name('main');
 Route::post('/main', [MainController::class, 'storeBoards'])->name('storeBor');
 Route::get('/profile', [MainController::class, 'editProfile'])->name('editProfile');

@@ -16,7 +16,9 @@ return new class extends Migration
 //            $table->foreignId('board_id')->constrained()
 //                ->onUpdate('cascade')
 //                ->onDelete('cascade');
-            $table->string('title',255);
+            $table->string('title',255)->nullable();
+            $table->string('description',255)->nullable();
+            $table->integer('board_id')->nullable();
 //            $table->integer('sort')->default(999);
             $table->timestamps();
         });

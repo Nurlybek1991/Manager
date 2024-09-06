@@ -11,13 +11,13 @@ class Board extends Model
 
     protected $fillable = [
         'title',
-        'user_id'
+        'user_id',
+        'description'
     ];
 
     protected $hidden = [
         'created_at',
-        'update_at',
-        'description'
+        'update_at'
     ];
 //    public function tasks()
 //    {

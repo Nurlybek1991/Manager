@@ -16,7 +16,8 @@ class BoardController extends Controller
 
     public function boardInfo()
     {
-        $boards = Board::all();
+        $id = Auth::id();
+        $boards = Board::all()->where('user_id', $id);
         return view('board', compact('boards'));
 
     }
@@ -26,8 +27,9 @@ class BoardController extends Controller
 
         $id = Auth::id();
         Board::create([
-            'title' => $request->title,
-            'user_id' => $id
+            'title' => $request->input('title'),
+            'user_id' => $id,
+            'description' => $request->input('description')
         ]);
 
         return redirect()->route('board');

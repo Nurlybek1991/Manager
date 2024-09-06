@@ -25,13 +25,13 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label">Username:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" value="janeuser">
+                        <input class="form-control" type="text" value="{{ $user->firstname }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="janesemail@gmail.com">
+                        <input class="form-control" type="text" value="{{ $user->email }}">
                     </div>
                 </div>
 
@@ -39,13 +39,13 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label">Password:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="password" value="11111122333">
+                        <input class="form-control" type="password" value="{{ $user->password }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Confirm password:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="password" value="11111122333">
+                        <input class="form-control" type="password" value="{{ $user->password }}">
                     </div>
                 </div>
                 <div class="form-group">

@@ -25,27 +25,37 @@
 <main>
 
     <body>
-
+    <form action="{{ route("createTask")}}" method="post">
+        @csrf
+        <input type="text" name="title" placeholder="Название задачи">
+{{--        <input type="text" name="title" placeholder="Добавить описание">--}}
+        <button>Создать</button>
+    </form>
     <div class="board">
         <div class="column" id="to-do">
             <h2>To Do</h2>
+            @foreach($tasks as $task)
+
             <div class="card">
-                <div class="card-header">Task 1</div>
-                <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div class="card-header">{{$task->title}}</div>
+                    <form action="{{ route("createTask")}}" method="post">
+                        @csrf
+                        <input type="text" name="title" placeholder="Карточка">
+                        <button>Добавить</button>
+                    </form>
+                <button type="submit">Удалить</button>
+                <div class="card-body">{{$task->description}}</div>
             </div>
-            <div class="card">
-                <div class="card-header">Task 2</div>
-                <div class="card-body">Pellentesque sed diam eu eros hendrerit mattis.</div>
-            </div>
+            @endforeach
         </div>
 
-        <div class="column" id="in-progress">
-            <h2>In Progress</h2>
-        </div>
+{{--        <div class="column" id="in-progress">--}}
+{{--            <h2>In Progress</h2>--}}
+{{--        </div>--}}
 
-        <div class="column" id="done">
-            <h2>Done</h2>
-        </div>
+{{--        <div class="column" id="done">--}}
+{{--            <h2>Done</h2>--}}
+{{--        </div>--}}
     </div>
 
     </body>
